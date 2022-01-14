@@ -156,7 +156,7 @@ function start() {
         let colisao5 = ($("#jogador").collision($("#amigo"))); //colisão entre jogador e prisioneiro, no caso é o que representa o resgate
         let colisao6 = ($("#inimigo2").collision($("#amigo"))); //colisão entre prisioneiro e caminhão
 
-        // jogador com o inimigo1
+        // jogador e nave inimiga
         if (colisao1.length>0) {
             energiaAtual--;
             inimigo1X = parseInt($("#inimigo1").css("left"));
@@ -168,7 +168,7 @@ function start() {
             $("#inimigo1").css("top",posicaoY);
         }
 
-        // jogador com o inimigo2
+        // jogador e caminhão
         if (colisao2.length>0) {
             energiaAtual--;
             inimigo2X = parseInt($("#inimigo2").css("left"));
@@ -178,7 +178,7 @@ function start() {
             reposicionaCaminhao();
         }
 
-        // Disparo com o inimigo1
+        // disparo e nave inimiga
         if (colisao3.length>0) {
             velocidade = velocidade+0.3;
             pontos = pontos+100;
@@ -186,13 +186,21 @@ function start() {
             inimigo1Y = parseInt($("#inimigo1").css("top"));
             explosaoNaveInimiga(inimigo1X,inimigo1Y);
             $("#disparo").css("left",950);
+            $("#inimigo1").remove();
 
-            posicaoY = parseInt(Math.random() * 334);
-            $("#inimigo1").css("left",694);
-            $("#inimigo1").css("top",posicaoY);
+            let tempoReposicaoNave = window.setInterval(reposicionaNave, 1000);
+
+            function reposicionaNave() {
+                $("#fundoGame").append("<div id='inimigo1' class='anima2'></div>");
+                posicaoY = parseInt(Math.random() * 334);
+                $("#inimigo1").css("left",694);
+                $("#inimigo1").css("top",posicaoY);
+                window.clearInterval(tempoReposicaoNave);
+                tempoReposicaoNave = null;
+            }
         }
 
-        // Disparo com o inimigo2
+        // disparo e caminhão
         if (colisao4.length>0) {
             pontos = pontos+50;
             inimigo2X = parseInt($("#inimigo2").css("left"));
@@ -204,15 +212,16 @@ function start() {
             reposicionaCaminhao();
         }
 
-        // jogador com o amigo
+        // jogador e prisioneiro
         if (colisao5.length>0) {
+            pontos += 100;
             salvos++;
             somResgate.play();
             reposicionaPrisioneiro();
             $("#amigo").remove();
         }
 
-        //Inimigo2 com o amigo
+        //prisioneiro e caminhão
         if (colisao6.length>0) {
             perdidos++;
             amigoX = parseInt($("#amigo").css("left"));
@@ -301,13 +310,13 @@ function start() {
             tempoColisao4 = null;
 
             if (fimDeJogo == false) {
-                $("#fundoGame").append("<div id=inimigo2></div");
+                $("#fundoGame").append("<div id=inimigo2></div>");
             }
         }
     }
 
     function placar() {
-        $("#placar").html("<h2> Pontos: " + pontos + "Salvos: " + salvos + " Perdidos: " + perdidos + "</h2>");
+        $("#placar").html(`<span> Pontos: ${pontos} </span> <span> salvos: ${salvos} </span> <span> perdidos: ${perdidos} </span>`);
     } //fim da função placar()
 
     function barraDeEnergia() {

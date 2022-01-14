@@ -179,14 +179,16 @@ background-image:url(../imgs/apache.png);
 }
 
 #placar {
-	width: 450px;
+	width: 500px;
 	height: 50px;
 	position: absolute;
 	left: 5px;
 	top: 590px;
+	display: flex;
+	justify-content: space-between;
 }
 
-h2 {
+h2, #placar {
 	font-family:Titulo;
 	font-size:20px;
 	color:#FFF
