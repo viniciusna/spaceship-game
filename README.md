@@ -11,3 +11,4 @@ Mudanças que fiz
     - Se deixar uma nave inimiga chegar ao final da tela, o jogador perde 40 pontos e a velocidade dela aumenta em 0.5
     - Pontuação negativa dá game over
 7. Adicionei um efeito de "hover" pelo CSS na opção "jogar novamente"
+8. Exibi as regras de pontuação do jogo na página inicial

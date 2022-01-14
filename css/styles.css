@@ -13,6 +13,15 @@ body {
     background-image:url(../imgs/fundo.jpg);
 }
 
+ul {
+    text-align: justify;
+    padding-left: 20px;
+}
+
+ul li {
+    margin-bottom: 10px
+}
+
 #container{
     width:950px;
     height:auto;
@@ -70,13 +79,12 @@ background-image:url(../imgs/apache.png);
 
 #inicio {
     width:350px;
-    height:200px;
     background-color:#FFF;
      margin-left:auto;
     margin-right:auto;
      margin-top:100px;
     text-align:center;
-    padding:10px;
+    padding:20px;
 }
 
 .anima1 {

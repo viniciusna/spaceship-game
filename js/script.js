@@ -292,7 +292,7 @@ function start() {
 
     //Reposiciona o prisioneiro
     function reposicionaPrisioneiro() {
-        let tempoAmigo = window.setInterval(reposiciona6, 8000);
+        let tempoAmigo = window.setInterval(reposiciona6, 6000);
 
         function reposiciona6() {
             window.clearInterval(tempoAmigo);
