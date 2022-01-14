@@ -95,6 +95,8 @@ function start() {
         $("#inimigo1").css("top",posicaoY);
 
         if (posicaoX <= 0) {
+            velocidade = velocidade + 0.5;
+            pontos -= 40;
             posicaoY = parseInt(Math.random() * 334);
             $("#inimigo1").css("left",694);
             $("#inimigo1").css("top",posicaoY);
@@ -223,6 +225,7 @@ function start() {
 
         //prisioneiro e caminhão
         if (colisao6.length>0) {
+            pontos -= 50;
             perdidos++;
             amigoX = parseInt($("#amigo").css("left"));
             amigoY = parseInt($("#amigo").css("top"));
@@ -289,7 +292,7 @@ function start() {
 
     //Reposiciona o prisioneiro
     function reposicionaPrisioneiro() {
-        let tempoAmigo = window.setInterval(reposiciona6, 6000);
+        let tempoAmigo = window.setInterval(reposiciona6, 8000);
 
         function reposiciona6() {
             window.clearInterval(tempoAmigo);
@@ -332,7 +335,7 @@ function start() {
             $("#energia").css("background-image", "url(imgs/energia1.png)");
         }
 
-        if (energiaAtual == 0) {
+        if (energiaAtual == 0 || pontos < 0) {
             $("#energia").css("background-image", "url(imgs/energia0.png)");
             gameOver();
         }
