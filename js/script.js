@@ -139,7 +139,7 @@ function start() {
 
         function executaDisparo() {
             posicaoX = parseInt($("#disparo").css("left"));
-            $("#disparo").css("left",posicaoX+15); 
+            $("#disparo").css("left",posicaoX+25); 
 
             if (posicaoX>900) {
                 window.clearInterval(tempoDisparo);
